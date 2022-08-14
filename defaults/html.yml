@@ -12,7 +12,7 @@ toc: true
 self-contained: true
 html-math-method:
   # Replace this with `method: katex` for better but slower math
-  method: mathml
+  method: katex
 css:
   - 3rdparty/pandoc-markdown-css-theme/public/css/theme.css
   - 3rdparty/pandoc-markdown-css-theme/public/css/skylighting-paper-theme.css
@@ -21,12 +21,17 @@ template: template
 variables:
   header-includes: |
     <style>
+    /* Ignore image width */
     img {
       width: 100% !important;
+    }
+
+    /* Fix sidenote counter (katex's counter-reset overrides it) */
+    body {
+      counter-reset: katexEqnNo mmlEqnNo sidenote-counter !important;
     }
     </style>
 
 metadata:
   csl: csl/ieee.csl
-  date: 1970-01-01
   maketitle: true

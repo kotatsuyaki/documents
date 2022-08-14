@@ -1,6 +1,7 @@
 data-dir: datadir
 from: markdown
 to: commonmark+tex_math_dollars
+self-contained: true
 filters:
   - pandoc-crossref
   - citeproc
@@ -9,6 +10,5 @@ filters:
 highlight-style: kate
 metadata:
   csl: csl/chicago-author-date.csl
-  date: 1970-01-01
   maketitle: true
   biblio-title: Bibliography
