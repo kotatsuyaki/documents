@@ -14,7 +14,6 @@
           haskellPackages.pandoc-sidenote
           librsvg
           gnumake
-          scons
         ];
         fonts-conf = pkgs.makeFontsConf {
           fontDirectories = [ pkgs.source-han-serif ];
