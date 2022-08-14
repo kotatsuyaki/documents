@@ -39,6 +39,19 @@ variables:
       max-width: 100%;
       overflow-x: auto;
     }
+
+    /* Provide distinguishable styling for definition list */
+    dt {
+      margin-top: var(--h2-margin-top);
+      font-style: italic;
+    }
+    dd {
+      border-left: lightgray 3px solid;
+      margin-left: 0.6em;
+      padding-left: 0.6em;
+      margin-top: var(--h2-margin-top);
+      overflow: hidden;
+    }
     </style>
 
 metadata:
