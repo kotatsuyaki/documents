@@ -1,0 +1,32 @@
+data-dir: datadir
+from: markdown+raw_attribute
+to: html5
+filters:
+  - pandoc-sidenote
+  - pandoc-crossref
+  - citeproc
+  - scholarly-metadata.lua
+  - author-info-blocks.lua
+
+toc: true
+self-contained: true
+html-math-method:
+  # Replace this with `method: katex` for better but slower math
+  method: mathml
+css:
+  - 3rdparty/pandoc-markdown-css-theme/public/css/theme.css
+  - 3rdparty/pandoc-markdown-css-theme/public/css/skylighting-paper-theme.css
+template: template
+
+variables:
+  header-includes: |
+    <style>
+    img {
+      width: 100% !important;
+    }
+    </style>
+
+metadata:
+  csl: csl/ieee.csl
+  date: 1970-01-01
+  maketitle: true

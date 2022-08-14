@@ -1,0 +1,1 @@
+../../3rdparty/lua-filters/scholarly-metadata/scholarly-metadata.lua

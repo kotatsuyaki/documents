@@ -1,0 +1,9 @@
+[submodule "3rdparty/pandoc-latex-template"]
+	path = 3rdparty/pandoc-latex-template
+	url = https://github.com/kotatsuyaki/pandoc-latex-template.git
+[submodule "3rdparty/lua-filters"]
+	path = 3rdparty/lua-filters
+	url = https://github.com/pandoc/lua-filters.git
+[submodule "3rdparty/pandoc-markdown-css-theme"]
+	path = 3rdparty/pandoc-markdown-css-theme
+	url = https://github.com/jez/pandoc-markdown-css-theme.git

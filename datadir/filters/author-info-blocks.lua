@@ -1,0 +1,1 @@
+../../3rdparty/lua-filters/author-info-blocks/author-info-blocks.lua

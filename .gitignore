@@ -1,0 +1,5 @@
+
+.direnv
+.github/workflows
+build
+.sconsign.dblite

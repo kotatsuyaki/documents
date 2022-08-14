@@ -1,0 +1,17 @@
+data-dir: datadir
+from: markdown
+pdf-engine: xelatex
+filters:
+  - pandoc-crossref
+  - citeproc
+  - scholarly-metadata.lua
+  - author-info-blocks.lua
+highlight-style: kate
+metadata:
+  csl: csl/ieee.csl
+  date: 1970-01-01
+  maketitle: true
+  biblio-title: Bibliography
+  geometry:
+    - margin=1in
+  linestretch: 1.5
