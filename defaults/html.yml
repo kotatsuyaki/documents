@@ -52,6 +52,11 @@ variables:
       margin-top: var(--h2-margin-top);
       overflow: hidden;
     }
+
+    /* Make citations single-line */
+    .csl-entry > * {
+      display: inline;
+    }
     </style>
 
 metadata:
