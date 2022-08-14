@@ -30,6 +30,15 @@ variables:
     body {
       counter-reset: katexEqnNo mmlEqnNo sidenote-counter !important;
     }
+
+    /* Fix katex overflow issue */
+    .katex-display {
+      overflow-x: auto;
+    }
+    .katex-display > .katex {
+      max-width: 100%;
+      overflow-x: auto;
+    }
     </style>
 
 metadata:
