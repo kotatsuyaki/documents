@@ -6,7 +6,10 @@
   outputs = { self, nixpkgs, utils }:
     utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = (import nixpkgs {
+          config.allowUnfree = true;
+          inherit system;
+        });
         deps = with pkgs; [
           texlive.combined.scheme-full
           pandoc
@@ -16,12 +19,18 @@
           gnumake
         ];
         fonts-conf = pkgs.makeFontsConf {
-          fontDirectories = [ pkgs.source-han-serif ];
+          fontDirectories = with pkgs; [
+            source-han-serif
+            edukai
+            noto-fonts-cjk
+            corefonts
+          ];
         };
       in
       {
         devShell = pkgs.mkShell {
           buildInputs = deps;
+          FONTCONFIG_FILE = fonts-conf;
         };
         defaultPackage = pkgs.stdenv.mkDerivation {
           name = "main.pdf";
