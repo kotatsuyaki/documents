@@ -6,8 +6,10 @@ date: 2022-06-12
 colorlinks: true
 bibliography: citations.bibtex
 
-fontsize: 12pt
-CJKmainfont: Source Han Sans
+fontsize: 11pt
+CJKmainfont: TW-MOE-Std-Kai
+CJKoptions:
+  - AutoFakeBold=1
 figPrefix: 圖
 reference-section-title: 引用
 
@@ -204,7 +206,7 @@ $$f = x_1x_2x_3x_4 + x_1x_2x_3x_5 + x_4x_6 + x_5x_6$$
 
 ## 實驗結果
 
-![實驗結果](./assets/res.png){#fig:exp width=60%}
+![實驗結果](./assets/res.png){#fig:exp width=40%}
 
 [@fig:exp]為文中給出的實驗結果。
 該表顯示了與JPH演算法相比，
