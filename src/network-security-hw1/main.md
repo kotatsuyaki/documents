@@ -5,6 +5,14 @@ author: 黃明瀧 111062612
 CJKmainfont: Source Han Sans
 ---
 
+# 1
+
+> Consider a system that provides authentication services for critical systems, applications, and devices. Give examples of confidentiality, integrity, and availability requirements associated with the system. In each case, indicate the degree of importance of the requirement.
+
+- Confidentiality: Within storage and during transmission, the system **must** keep the hashed passwords and personal metadata confidential.
+- Integrity: Within storage and during transmission, the system **must** be able to self-monitor to ensure integrity ot the hashed passwords and personal metadata.
+- Availability: The system has to be kept online, otherwise other systems relying on the authentication services may not be able to operate normally. This requirement is less important in the sense that unlike the previous two requirements, system outages can often be resolved without permanent damage.
+
 # 2 (a)
 
 > Consider a desktop publishing system used to produce documents for various organizations.
@@ -29,7 +37,7 @@ For documents that must be produced on a timely manner (e.g. daily newsletter), 
 
 > Alice was told to design a scheme to prevent messages from being modified by an attacker. Alice decides to append to each message a hash (message digest) of that message. Why doesn’t this solve the problem?
 
-Suppose that the attacker can modify the message during transmittion. In that case, the attacker can modify the message body itself **and also the hash value**, without being noticed by the receiver.
+Suppose that the attacker can modify the message during transmission. In that case, the attacker can modify the message body itself **and also the hash value**, without being noticed by the receiver.
 
 # 4
 
@@ -57,4 +65,36 @@ Since $T = K$, we have $K = 0, 0, 255, 254, 253, 252, \dots, 2$.
 
 # 5
 
+> With the ECB mode, if there is an error in a block of the transmitted ciphertext, only the corresponding plaintext block is affected. However, in the CBC mode, this error propagates. For example, an error in the transmitted $C_1$ obviously corrupts $P_1$ and $P_2$. Are any blocks beyond $P_2$ affected?
 
+No, blocks beyond $P_2$ are not affected by the error in $C_1$.
+
+With the CBC mode of operation, each decrypted plaintext $P_i$ (where $i \neq 1$) depends exactly on $C_{i - 1}$, $C_i$, and the key $K$, so plaintexts staring from $P_3$ does not depend on $C_1$ anymore.
+
+# 6
+
+> Is it possible to perform encryption operations in parallel on multiple blocks of plaintext in CBC mode? How about decryption?
+
+- CBC mode encryption **cannot** be paralellized at all, since $C_i$ depends on $C_{i - 1}$, which then depends on $C_{i - 2}$ and so on, making serialized computation the only possible implementation.
+- CBC mode decryption **can** be parallized. For decryption, $P_i$ depends exactly on $K$, $C_i$, and $C_{i - 1}$ and nothing more, making it plausible to compute multiple $P_i$ blocks simultaneously, as long as the ciphertext blocks are received.
+
+# 7
+
+> Suppose $H(m)$ is a collision-resistant hash function that maps a message of arbitrary bit length into an $n$-bit hash value. Is it true that, for all messages $x$, $x'$ with $x \neq x'$, we have $H(x) \neq H(x')$? Explain your answer.
+
+No, the statement is not true. The domain of $H$ has a cardinality of $\infty$ due to the arbitrary bit length of input messages, while the cardinality of the image of $H$ is constrained to be $\leq 2^n$ unique values due to the bit length of the hash values. This makes it impossible for $H$ to be injective.
+
+# 8
+
+> It is possible to use a hash function to construct a block cipher with a structure similar to DES. Because a hash function is one way and a block cipher must be reversible (to decrypt), how is it possible?
+
+As seen in the round function of DES (and the Fiestel Structure), the hash function is only to be used to map some values to XOR masks. The inputs to the hash function are still available (or deducible) after encryption, so the whole process is still reversible.
+
+# 9
+
+> In an RSA system, the public key of a given user is $e = 3$, $n = 667$. What is the private key for this user?
+
+By prime-factorizing $n$, we get $n = 667 = 29 \times 23$, so we have $(p, q) = (29, 23)$ and $\phi(n) = 28 \times 22 = 616$.
+By solving $3d \mod 616 = 1$, we get $d = 411$.
+
+Therefore, the private key is $\{d, n\} = \{411, 667\}$.
